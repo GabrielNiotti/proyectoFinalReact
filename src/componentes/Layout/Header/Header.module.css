@@ -1,0 +1,179 @@
+.contenedorHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0886b8;
+  width: 100%;
+  padding: 15px 0;
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+}
+.logo {
+  align-self: flex-start;
+  width: auto;
+  height: auto;
+  margin-left: 20px;
+}
+.titulo {
+  color: black;
+  margin: 1;
+  font-size: 3rem;
+}
+.subtitulo {
+  color: #333;
+  margin: 0;
+  font-size: 1.5rem;
+  gap: 30px;
+}
+
+.menu {
+  width: 100%;
+  display: block;
+}
+
+.lista-grid {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+}
+
+.lista-grid li a {
+  color: black;
+  text-decoration: none;
+}
+.lista-grid li a:hover {
+  color: #fff;
+  text-shadow:
+    0 0 8px #00d4ff,
+    0 0 15px #00d4ff;
+  background-color: transparent;
+}
+
+.menuIcon {
+  display: none; /* Oculto en computadoras */
+  background: transparent !important; /* Elimina fondos grises por defecto */
+  border: none !important;
+  outline: none;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 25px; /* Ajusta este valor si tu título es muy alto */
+  z-index: 1001; /* Un número alto para que flote sobre todo lo demás */
+  padding: 5px;
+}
+.menuIcon svg {
+  color: #000000 !important; /* Color negro para que contraste con el fondo celeste */
+  width: 32px !important; /* Tamaño del icono agrandado */
+  height: 32px !important;
+  display: block;
+}
+
+/* 1. TABLETS (Pantallas medianas - hasta 1024px) */
+@media (max-width: 1024px) {
+  .logo {
+    width: 240px; /* Logo un poco más pequeño */
+  }
+  .titulo {
+    font-size: 2.5rem;
+  }
+  .lista-grid {
+    gap: 15px;
+    font-size: 18px;
+  }
+}
+
+/* 2. CELULARES GRANDES / TABLETS VERTICAL (hasta 768px) */
+@media (max-width: 768px) {
+  .contenedorHeader {
+    padding: 20px 0;
+  }
+
+  .logo {
+    align-self: center; /* Centramos el logo */
+    margin-left: 0;
+    width: 200px;
+  }
+
+  .titulo {
+    font-size: 2rem;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .subtitulo {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .menuIcon {
+    display: block; /* Mostramos el ícono del menú en pantallas pequeñas */
+  }
+
+  .menu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Despliega justo abajo del header azul */
+    left: 0;
+    width: 100%;
+    background-color: #87ceeb; /* Mismo azul del header */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    padding-bottom: 15px;
+  }
+
+  /* Esta clase la activa React al dar clic al botón */
+  .menuActivo {
+    display: block;
+  }
+
+  .lista-grid {
+    flex-direction: column; /* Menú en vertical para que no se amontone */
+    align-items: center;
+    margin-top: 15px;
+    gap: 12px;
+  }
+}
+
+/* 3. CELULARES PEQUEÑOS (hasta 480px) */
+@media (max-width: 480px) {
+  .logo {
+    width: 160px; /* Logo compacto */
+  }
+
+  .titulo {
+    font-size: 1.6rem;
+  }
+
+  .subtitulo {
+    font-size: 1rem;
+    padding: 0 15px;
+  }
+
+  .lista-grid {
+    flex-direction: column; /* Menú en vertical para que no se amontone */
+    align-items: center;
+    gap: 8px;
+  }
+
+  .lista-grid li a {
+    font-size: 16px;
+    display: block;
+    padding: 5px 0;
+  }
+}
+
+/* 4. PANTALLAS MUY GRANDES (Opcional - más de 1440px) */
+@media (min-width: 1440px) {
+  .contenedorHeader {
+    padding: 30px 0;
+  }
+  .titulo {
+    font-size: 4rem; /* Un título imponente en pantallas pro */
+  }
+}
