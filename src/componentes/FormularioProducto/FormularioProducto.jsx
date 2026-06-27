@@ -1,3 +1,4 @@
+//original
 // En src/componentens/FormularioProducto/FormularioProducto
 import React from "react";
 import styles from "./FormularioProducto.module.css"
@@ -9,7 +10,8 @@ function FormularioProducto({
   manejarEnvio,
   manejarCambioImagen,
   loading,
-  esEdicion = false,
+  esEdicion,
+  onCancel
 }) {
   //console.log(datosForm);
 
@@ -113,15 +115,22 @@ function FormularioProducto({
           onChange={manejarCambioImagen}
         />
       </div>
+<div style={{ display: "flex", gap: "10px", marginTop: "15px" }}>
+        <button type="submit" disabled={loading} className={styles.btnGuardar}>
+          {loading ? "Guardando..." : esEdicion ? "Actualizar Producto" : "Guardar Producto"}
+        </button>
 
-      {/* 🌟 Clase de CSS Modules del botón con soporte de carga */}
-      <button 
-        type="submit"
-        disabled={loading}
-        className={styles.btnGuardar}
-      >
-        {loading ? "Guardando..." : esEdicion? "Actualizar Producto" : "Guardar Producto"}
-      </button>
+        {/* 🌟 AGREGAMOS EL BOTÓN CONDICIONADO AL MODO EDICIÓN */}
+        {esEdicion && !loading && (
+          <button 
+            type="button" // 👈 Clave: para que no envíe el formulario por error
+            onClick={onCancel} 
+            style={{ backgroundColor: "#6c757d", color: "white", padding: "10px 15px", borderRadius: "4px", border: "none", cursor: "pointer" }}
+          >
+            Cancelar Modificación
+          </button>
+        )}
+      </div>
     </form>
   );
 }

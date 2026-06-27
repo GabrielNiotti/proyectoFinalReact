@@ -97,7 +97,6 @@ const Gestion = () => {
       <hr className={styles.separador} />
       
       <FormularioContainer 
-        key={productoAEditar ? productoAEditar.id : "crear"}
         datosForm={datosForm}
         setDatosForm={setDatosForm}
         esEdicion={!!productoAEditar}

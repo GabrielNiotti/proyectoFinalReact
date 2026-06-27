@@ -78,9 +78,9 @@ function Productos({ Mensaje, Destacados }) {
           
           <div key={item.id} className={styles.contenedorTarjeta}>
             <TarjetaProducto producto={item} esDestacado={Destacados} />
-            <Link to={`/productos/${item.idFirestore || item.id}`} className={styles.linkDetalle}>
+            {/*<Link to={`/productos/${item.idFirestore || item.id}`} className={styles.linkDetalle}>
               Ver Detalle
-            </Link>
+            </Link> (esto me genera un boton)*/}
           </div>
         ))}
       </div>

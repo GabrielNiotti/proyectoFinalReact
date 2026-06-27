@@ -155,6 +155,7 @@ const ProductoDetalle = () => {
             manejarCambioImagen={manejarCambioImagen}
             loading={loadingForm}
             esEdicion={true}
+            onCancel={() => setEsEdicion(false)}
           />
           <button
             onClick={() => setEsEdicion(false)}
