@@ -50,9 +50,10 @@ function FormularioContainer() {
       setImagenFile(evento.target.files[0]);
     }
   };
-
+//----------------------
   const manejarEnvio = async (evento) => {
     evento.preventDefault();
+    let imagen = datosForm.imagen;
 
     if (!imagenFile) {
       alert("Por favor, selecciona una imagen para el producto.");

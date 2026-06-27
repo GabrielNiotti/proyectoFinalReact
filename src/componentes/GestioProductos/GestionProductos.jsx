@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../firebase/config";
 import FormularioContainer from "../FormularioProducto/FormularioContainer";
-import { collection, deleteDoc, getDocs, doc, updateDoc } from "firebase/firestore"; 
+import { collection, deleteDoc, getDocs, doc, updateDoc, addDoc } from "firebase/firestore"; 
 import styles from "./GestionProductos.module.css"
 
 const Gestion = () => {
   const [productos, setProductos] = useState([]);
   
   const estadoInicialForm = {
-    id: "",
+    id: 0,
     nombre: "",
     categoria: "",
     descripcion: "",
-    precio: "",
-    stock: "",
     destacado: "",
+    precio: 0,
+    stock: 0,    
     imagen: "",
   };
 
@@ -31,6 +31,16 @@ const Gestion = () => {
     cargarProductos();
   }, []);
 
+  //para que se llenen los campos al editar
+  useEffect(() => {
+    if (productoAEditar) {
+      setDatosForm(productoAEditar);
+    } else {
+      setDatosForm (estadoInicialForm);
+    }
+  },[productoAEditar]
+);
+
   // Función eliminar
   const handleDelete = async (id) => {
     const confirmacion = window.confirm("¿Está seguro de eliminar este producto?");
@@ -45,7 +55,7 @@ const Gestion = () => {
   // Al hacer clic en Editar
   const handleEditClick = (producto) => {
     setProductoAEditar(producto);
-    setDatosForm({ ...producto }); 
+    //setDatosForm({ ...producto }); 
   };
 
   // Al cancelar
@@ -90,7 +100,7 @@ const Gestion = () => {
         key={productoAEditar ? productoAEditar.id : "crear"}
         datosForm={datosForm}
         setDatosForm={setDatosForm}
-        isEditing={!!productoAEditar}
+        esEdicion={!!productoAEditar}
         onUpdate={handleUpdate}
         onCancel={handleCancelClick}
         estadoInicialForm={estadoInicialForm}

@@ -5,6 +5,7 @@ import logo from "../../../../public/images/logoCyberFull.jpeg";
 import { Link } from "react-router-dom";
 import Carrito from "../../Carrito/Carrito";
 import { useCarrito } from "../../../context/CartContext";
+import GestionCupones from "../../GestionCupones/GestionCupones";
 
 function Header() {
   const [menuAbierto, setMenuAbierto] = useState(false);
@@ -53,6 +54,12 @@ function Header() {
               Gestion de Producto
             </Link>
           </li>
+          <li>
+            <Link to="/cupones" onClick={() => setMenuAbierto(false)}>
+              Cupones
+            </Link>
+          </li>
+
           <li>
             <Link
               to="/carrito"

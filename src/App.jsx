@@ -12,34 +12,35 @@ import ProductoDetalle from "./componentes/ProductoDetalle/ProductoDetalle";
 import Carrito from "./componentes/Carrito/Carrito";
 import ProductosDb from "./componentes/Productos/ProductosDb/ProductosDb";
 import Gestion from "./componentes/GestioProductos/GestionProductos";
+import GestionCupones from "./componentes/GestionCupones/GestionCupones";
 
 function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route 
-        path="/" element={<Inicio />} />
+        <Route path="/" element={<Inicio />} />
         <Route
           path="/productos"
-          element={<Productos Mensaje={"Nuestros productos"} Destacados={false} />} 
+          element={
+            <Productos Mensaje={"Nuestros productos"} Destacados={false} />
+          }
         />
         <Route
           path="/productosdb"
-          element={<ProductosDb Mensaje={"Nuestros productos"} Destacados={false} />} 
+          element={
+            <ProductosDb Mensaje={"Nuestros productos"} Destacados={false} />
+          }
         />
-
-
-        <Route 
-        path="/productos/:id" element={<ProductoDetalle />} />
+        <Route path="/productos/:id" element={<ProductoDetalle />} />
         <Route
           path="/servicios"
           element={<Servicios Mensaje={"Nuestros Servicios"} />}
         />
-        <Route 
-        path="/gestion" element={<Gestion/>} />
+        <Route path="/gestion" element={<Gestion />} />
+        <Route path="/cupones" element={<GestionCupones />} />
+
         <Route path="/carrito" element={<Carrito />} />
       </Route>
-      
     </Routes>
   );
 }

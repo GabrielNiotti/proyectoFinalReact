@@ -9,13 +9,14 @@ function FormularioProducto({
   manejarEnvio,
   manejarCambioImagen,
   loading,
+  esEdicion = false,
 }) {
-  console.log(datosForm);
+  //console.log(datosForm);
 
     return (
     // 🌟 Aplicamos la clase combinada del formulario
     <form className={styles.formulario} onSubmit={manejarEnvio}>
-      <h3>Agregar Nuevo Producto</h3>
+      <h3>{esEdicion ? "Modificar Producto":"Agregar Nuevo Producto"}</h3>
       
       <div>
         <label>1 - Id del Producto:</label>
@@ -26,6 +27,7 @@ function FormularioProducto({
           name="id"
           value={datosForm.id}
           onChange={manejarCambio}
+          disabled={esEdicion}
         />
       </div>
 
@@ -118,7 +120,7 @@ function FormularioProducto({
         disabled={loading}
         className={styles.btnGuardar}
       >
-        {loading ? "Subiendo Producto..." : "Guardar Producto"}
+        {loading ? "Guardando..." : esEdicion? "Actualizar Producto" : "Guardar Producto"}
       </button>
     </form>
   );

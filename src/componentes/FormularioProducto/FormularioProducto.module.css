@@ -53,3 +53,24 @@
   box-shadow: none;
   transform: none;
 }
+
+
+/*--------------*/
+.accionesFormulario {
+  display: flex;
+  gap: 12px; /* Deja espacio horizontal entre ambos botones */
+  margin-top: 15px;
+}
+
+.btnCancelar {
+  background-color: #6c757d; /* Color gris */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btnCancelar:hover {
+  background-color: #5a6268;
+}
